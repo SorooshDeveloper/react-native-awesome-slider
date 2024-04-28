@@ -1,4 +1,4 @@
-import React, { FC, memo, useCallback, useMemo, useRef, useState } from 'react';
+import React, { FC, memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   Insets,
   LayoutChangeEvent,
@@ -675,7 +675,10 @@ export const Slider: FC<AwesomeSliderProps> = memo(function Slider({
         if (panDirectionValue) {
           panDirectionValue.value = PanDirectionEnum.END;
         }
-        bubbleOpacity.value = withSpring(0);
+        if (progress.value  == 0) {
+
+          bubbleOpacity.value = withSpring(0);
+        }
 
         if (disableTrackFollow) {
           progress.value = xToProgress(x);
@@ -740,7 +743,7 @@ export const Slider: FC<AwesomeSliderProps> = memo(function Slider({
           if (isScrubbing) {
             isScrubbing.value = true;
           }
-          bubbleOpacity.value = withSpring(0);
+          // bubbleOpacity.value = withSpring(0);
           if (onSlidingComplete) {
             runOnJS(onSlidingComplete)(shareValueToSeconds());
           }
@@ -810,7 +813,10 @@ export const Slider: FC<AwesomeSliderProps> = memo(function Slider({
     width.value = layoutWidth;
     setSliderWidth(layoutWidth);
   };
+  useEffect(() => {
+    runOnJS(onSlideAcitve)(shareValueToSeconds());
 
+  } , [ ])
   return (
     <GestureDetector gesture={gesture}>
       <Animated.View
