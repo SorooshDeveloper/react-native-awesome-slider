@@ -75,28 +75,13 @@ export const BubbleComponent = React.forwardRef<BubbleRef, BubbleProps>(
             caretHidden
           />
         </Animated.View>
-        <View
-          style={[
-            styles.triangle,
-            {
-              borderTopColor: color,
-            },
-          ]}
-        />
       </Animated.View>
     );
   }
 );
 export const Bubble = memo(BubbleComponent);
 const styles = StyleSheet.create({
-  triangle: {
-    width: 10,
-    height: 10,
-    borderWidth: 5,
-    borderColor: 'transparent',
-    backgroundColor: 'transparent',
-    flexDirection: 'row',
-  },
+
   textStyle: {
     fontSize: 12,
     paddingVertical: 0,
