@@ -478,7 +478,7 @@ export const Slider: FC<AwesomeSliderProps> = memo(function Slider({
 
       setBubbleText
         ? setBubbleText(bubbleText)
-        : bubbleRef.current?.setText(bubbleText);
+        : bubbleRef.current?.setText(bubbleText + '%');
     },
     [bubble, onValueChange, setBubbleText]
   );
